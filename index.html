@@ -449,10 +449,10 @@ footer{font:11px Arial,Helvetica,sans-serif;color:#6b7280;padding:4px 0 28px;dis
     updateProgress();toast('Ticks and highlights cleared');
   });
 
-  /* ---- initial state: collapsed unless the URL names a stop ---- */
+  /* ---- initial state: all open so programs/charts visible; hash focuses one ---- */
   function hashStop(){var m=/^#stop([1-8])$/.exec(location.hash);return m?cardFor(m[1]):null}
   var target=hashStop();
-  cards.forEach(function(c){if(c!==target){c.open=false;resetAnim(c)}});
+  cards.forEach(function(c){c.open=true; runAnim(c);});
   setStick();
   if(target){openCard(target,{instant:true,scroll:true});}
   syncTabs();
